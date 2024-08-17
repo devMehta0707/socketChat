@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/assets/images/logo.png">
+  <title>Chat</title>
+  <!-- bootstrap 5.3 -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+  <!-- font-awesome icon file -->
+  <script src="https://kit.fontawesome.com/9afdb21cde.js" crossorigin="anonymous"></script>
+  <!-- bootstrap icon -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <!-- chat style.css -->
+  <link rel="newest stylesheet" href="/assets/css/chat.css">
+
+</head>
+
+<body onload="autoScroll()">
+
+  <div class="container-fluid">
+
+    <div class="row gx-0 mx-0 w-100 " id="mobi">
+      <div class="col-lg-4 col-md-5 pe-md-0">
+        <div class="cont_scroll_bxo">
+          <!-- chat list -->
+          <div class="left_box">
+            <div class="left_head">
+              <div class="chat_b_top">
+                <span> Newest First <a href=""><i class="bi bi-sort-down-alt"></i></a></span>
+              </div>
+              <div class="form_group">
+                <input type="search" name="search" id="search" class="form_control" placeholder="Search">
+                <i class="bi bi-search"></i>
+              </div>
+              <div class="list-group user_list">
+                <% for(let user of constants){%>
+                <a class="list-group-item list-group-item-action active " onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/chat1.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0"><%= user.sender.id==1 ? user.reciever.name : user.sender.name %> <small>07:00 AM</small>
+                      </h5>
+                      <p class="mt-2"><%= user.last_message %></p>
+                    </div>
+                  </div>
+                </a>
+                <% } %>
+                <!-- <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/sub.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/post.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/post2.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/post3.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/post4.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/chat4.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/chat3.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/post.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a>
+                <a class="list-group-item list-group-item-action" onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                  <div class="user_name">
+                    <div class="user_img">
+                      <img src="assets/images/post2.png" alt="">
+                    </div>
+                    <div class="w-100">
+                      <h5 class=" mb-0">Name Here <small>07:00 AM</small></h5>
+
+                      <p class="mt-2">Lorem Ipsum is simply dummy text</p>
+                    </div>
+                  </div>
+                </a> -->
+
+              </div>
+            </div>
+          </div>
+          <!-- \ chat list -->
+        </div>
+      </div>
+      <!-- \ col end -->
+      <div class="col-lg-8 col-md-7 ps-md-0 ">
+        <div class="pt-0">
+          <div class="rigth_box_chat container px-md-0">
+            <div class="chat_head">
+
+              <i onclick="add_class('mobi', 'showChat')" style="cursor: pointer;" class="fa-solid fa-bars me-2 my-3 d-md-none"></i>
+              <div class="user_img me-0">
+                <img src="assets/images/chat1.png" alt="">
+              </div>
+              <h5 class="mb-0">Name Here</h5>
+
+              <div class="btn-group ms-auto chat_drop">
+                <a class="chat_drop_btn" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-ellipsis-vertical"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><button class="dropdown-item" type="button">Delete</button></li>
+                  <li><button class="dropdown-item" type="button">Block</button></li>
+                  <li><button class="dropdown-item" type="button">Report</button></li>
+                </ul>
+              </div>
+
+            </div>
+            <div class="chat_body pt-md-5 pt-3" id="chat-down">
+              <div class="received message">
+                <img src="assets/images/chat1.png" alt="">
+                <div class="msg">
+                  <h5>Name Here</h5>
+                  <p>Lorem Ipsum is simply dummy text...</p>
+                  <small>07:00 AM</small>
+                </div>
+              </div>
+              <div class="send message">
+                <div class="msg">
+                  <h5>Name Here</h5>
+                  <p>Lorem Ipsum is simply dummy text...</p>
+                  <small>07:00 AM</small>
+                </div>
+                <img src="assets/images/user.png" alt="">
+              </div>
+              <!-- <div class="received message">
+                <img src="assets/images/chat1.png" alt="">
+                <div class="msg">
+                  <h5>Name Here</h5>
+                  <p>Lorem Ipsum is simply dummy text...</p>
+                  <small>07:00 AM</small>
+                </div>
+              </div>
+              <div class="send message">
+                <div class="msg">
+                  <h5>Name Here</h5>
+                  <p>Lorem Ipsum is simply dummy text...</p>
+                  <small>07:00 AM</small>
+                </div>
+                <img src="assets/images/user.png" alt="">
+              </div>
+              <div class="received message">
+                <img src="assets/images/chat1.png" alt="">
+                <div class="msg">
+                  <h5>Name Here</h5>
+                  <p>Lorem Ipsum is simply dummy text...</p>
+                  <small>07:00 AM</small>
+                </div>
+              </div>
+              <div class="send message">
+                <div class="msg">
+                  <h5>Name Here</h5>
+                  <p><img src="assets/images/sendpik.jpg" class="msgpik" alt=""></p>
+                  <small>07:00 AM</small>
+                </div>
+                <img src="assets/images/user.png" alt="">
+              </div> -->
+            </div>
+            <div class="chat_footer">
+              <input type="text" name="" id="inputField" class="form_control" placeholder="Type your message...">
+              <div class="input_group">
+                <input type="file" id="upload" class="d-none">
+                <label for="upload"><i class="fa-solid fa-paperclip"></i></label>
+              </div>
+              <button onclick="sendMessage()">Send</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- \ col end -->
+    </div>
+    <!-- \ row end -->
+  </div>
+  <!-- bootstrap js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io();
+    socket.emit('connect_user',{id:1})
+    // toggle script any where
+    function add_class(id, addcl) {
+      var element = document.getElementById(id);
+      element.classList.toggle(addcl);
+    }
+    // scroll down chat body
+    function autoScroll() {
+
+      document.getElementById('chat-down').scrollBy(0, 500);
+
+    }
+
+    sendMessage = () => {
+      let msg = $('#inputField').val();
+      $('#chat-down').append(`<div class="send message">
+                <div class="msg">
+                  <h5>You</h5>
+                  <p>${msg}</p>
+                  <small>${moment().calendar()}</small>
+                </div>
+                <img src="assets/images/user.png" alt="">
+              </div>`)  
+              $('#inputField').val('');
+              socket.emit('send_message',{sender_id:2,reciever_id:1,message:msg})
+    }
+
+    $('#inputField').on('keyup',(e)=>{
+      if(e.keyCode==13){
+        sendMessage()
+        autoScroll()
+      }
+    })
+  </script>
+
+</body>
+
+</html>
