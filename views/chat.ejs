@@ -36,7 +36,7 @@
               </div>
               <div class="list-group user_list">
                 <% for(let user of constants){%>
-                <a class="list-group-item list-group-item-action active " onclick="add_class('mobi', 'showChat'), autoScroll()" aria-current="true">
+                <a class="list-group-item list-group-item-action active " onclick="add_class('mobi', 'showChat'), autoScroll(), getMessages(`<%= user.id %>`)" aria-current="true">
                   <div class="user_name">
                     <div class="user_img">
                       <img src="assets/images/chat1.png" alt="">
@@ -262,6 +262,7 @@
   <script>
     const socket = io();
     socket.emit('connect_user',{id:1})
+    // socket.emit('connect_user',{id:2})
     // toggle script any where
     function add_class(id, addcl) {
       var element = document.getElementById(id);
@@ -293,6 +294,25 @@
         sendMessage()
         autoScroll()
       }
+    })
+
+    getMessages = (id)=>{
+      console.log('in funct',id)
+      socket.emit('getMessages',{id})
+    }
+
+    socket.on('getMessagesListener',(resp)=>{
+      $('#chat-down').html('')
+      resp.forEach(msgs => {
+        $('#chat-down').append(`<div class="send message">
+                <div class="msg">
+                  <h5>You</h5>
+                  <p>${msgs.message}</p>
+                  <small>${moment().calendar()}</small>
+                </div>
+                <img src="assets/images/user.png" alt="">
+              </div>`)
+      });
     })
   </script>
 

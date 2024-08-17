@@ -117,6 +117,15 @@ io.on('connection', (socket) => {
       message: data.message
     })
   })
+
+  socket.on('getMessages',async (data)=>{
+    const msgs = await Message.findAll({
+      where:{
+        constant_id:data.id
+      }
+    })
+    io.emit('getMessagesListener',msgs)
+  })
 })
 
 httpServer.listen(port, () => {
