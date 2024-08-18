@@ -11,6 +11,15 @@ const Message = require('./models/Message');
 const port = 3000;
 const io = new Server(httpServer)
 const path = require('path')
+const routes = require('./routes/route')
+
+app.use(express.urlencoded({extended:false}))
+app.use(express.json())
+app.use('/',routes);
+app.use(express.static(path.join(__dirname, 'public')));
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs')
+
 Constant.belongsTo(User, {
   foreignKey: "sender_id",
   as: "sender"
@@ -19,10 +28,15 @@ Constant.belongsTo(User, {
   foreignKey: "reciever_id",
   as: "reciever"
 })
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs')
+Message.belongsTo(User, {
+  foreignKey: "sender_id",
+  as: "msgSender"
+})
+Message.belongsTo(User, {
+  foreignKey: "reciever_id",
+  as: "msgReciever"
+})
 
 
 app.get('/', (req, res) => {
@@ -122,7 +136,17 @@ io.on('connection', (socket) => {
     const msgs = await Message.findAll({
       where:{
         constant_id:data.id
-      }
+      },
+      include:[
+        {
+          model: User,
+          as: "msgSender"
+        },
+        {
+          model: User,
+          as: "msgReciever"
+        }
+      ]
     })
     io.emit('getMessagesListener',msgs)
   })

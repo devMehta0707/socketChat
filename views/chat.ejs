@@ -36,7 +36,7 @@
               </div>
               <div class="list-group user_list">
                 <% for(let user of constants){%>
-                <a class="list-group-item list-group-item-action active " onclick="add_class('mobi', 'showChat'), autoScroll(), getMessages(`<%= user.id %>`)" aria-current="true">
+                <a class="list-group-item list-group-item-action active constantList" onclick="add_class('mobi', 'showChat'), autoScroll(), getMessages(`<%= user.id %>`)" aria-current="true">
                   <div class="user_name">
                     <div class="user_img">
                       <img src="assets/images/chat1.png" alt="">
@@ -189,7 +189,7 @@
 
             </div>
             <div class="chat_body pt-md-5 pt-3" id="chat-down">
-              <div class="received message">
+              <!-- <div class="received message">
                 <img src="assets/images/chat1.png" alt="">
                 <div class="msg">
                   <h5>Name Here</h5>
@@ -204,7 +204,7 @@
                   <small>07:00 AM</small>
                 </div>
                 <img src="assets/images/user.png" alt="">
-              </div>
+              </div> -->
               <!-- <div class="received message">
                 <img src="assets/images/chat1.png" alt="">
                 <div class="msg">
@@ -304,15 +304,18 @@
     socket.on('getMessagesListener',(resp)=>{
       $('#chat-down').html('')
       resp.forEach(msgs => {
-        $('#chat-down').append(`<div class="send message">
+        $('#chat-down').append(`<div class="${msgs.sender_id==1 ? 'send' : 'received'} message">
                 <div class="msg">
-                  <h5>You</h5>
+                  <h5>${msgs.sender_id==1 ? 'You' : msgs.msgSender.name}</h5>
                   <p>${msgs.message}</p>
-                  <small>${moment().calendar()}</small>
+                  <small>${moment(msgs.created_at).calendar()}</small>
                 </div>
                 <img src="assets/images/user.png" alt="">
               </div>`)
       });
+    })
+    $(document).ready(()=>{
+      $('.constantList')[0].click()
     })
   </script>
 
