@@ -12,3 +12,5 @@ const emailExist = async (email) => {
 		throw error
 	}
 }
+
+module.exports = {emailExist};

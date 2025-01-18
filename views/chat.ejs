@@ -286,7 +286,7 @@
                 <img src="assets/images/user.png" alt="">
               </div>`)  
               $('#inputField').val('');
-              socket.emit('send_message',{sender_id:2,reciever_id:1,message:msg})
+              socket.emit('send_message',{sender_id:1,reciever_id:2,message:msg})
     }
 
     $('#inputField').on('keyup',(e)=>{
